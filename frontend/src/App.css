@@ -1,0 +1,339 @@
+/* Algemene styling */
+.App {
+  display: flex;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Zijbalk styling */
+/* .sidebar {
+  background-color: #282c34;
+  color: white;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+} */
+
+ /* New menu */
+ .menu-bar {
+  background-color: #f8f8f8; /* Achtergrondkleur */
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  flex-direction: column; /* Rijen maken */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 0;
+}
+
+/* Bovenste rij: Logo en titel */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px; /* Ruimte tussen bovenste en onderste rij */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logo {
+  height: 50px; /* Grootte van het logo */
+  margin-right: 10px;
+}
+
+.menu-title {
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+}
+
+.menu-header .logo{
+  height: 90px;
+  margin: 0;
+}
+/* Onderste rij: Links en zoekknop */
+.menu-bottom {
+  display: flex;
+  justify-content: space-between; /* Links en rechts uitlijnen */
+  align-items: center;
+}
+
+/* Links */
+.menu-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-links li {
+  margin-right: 20px; /* Ruimte tussen de links */
+}
+
+.menu-links a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.menu-links a:hover {
+  text-decoration: underline;
+}
+
+/* Zoekknop */
+.menu-search {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.menu-search input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+  width: 150px;
+}
+
+.search-button {
+  padding: 5px 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* .sidebar h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+} */
+
+/* New Saber Content gebied */
+.content {
+  padding: 20px;
+  flex: 1;
+  padding-top: 180px;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.search-bar {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-dropdown {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.prompt-card {
+  background: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.prompt-card h2 {
+  margin: 0 0 10px;
+}
+
+.preview-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.preview-button:hover {
+  background-color: #0056b3;
+}
+
+/* Chatbot Styling */
+.chatbot-box {
+  position: fixed;
+  bottom: 20px; /* Ruimte vanaf de onderkant */
+  right: 20px;  /* Ruimte vanaf de rechterkant */
+  background: white;
+  border: 1px solid #ddd;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtiele zwevende schaduw */
+  z-index: 1000;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Animatie bij minimaliseren */
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #282c34;
+  color: white;
+  cursor: pointer;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+}
+
+.toggle-button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.chatbot-content {
+  padding: 15px;
+}
+
+.chatbot-box.hidden {
+  transform: scale(0.9); /* Kleinere weergave bij minimalisatie */
+  opacity: 0.8; /* Verminderde zichtbaarheid bij minimalisatie */
+  height: 40px; /* Alleen de koptekst zichtbaar */
+  border-radius: 10px;
+}
+
+.chatbot-box.visible {
+  transform: scale(1); /* Normale grootte */
+  opacity: 1; /* Volledig zichtbaar */
+  height: auto; /* Inhoud wordt zichtbaar */
+  border-radius: 10px;
+}
+
+/* Algemene Popup Styling */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Donkere overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Zorg ervoor dat de popup boven andere elementen ligt */
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%; /* Maak het responsief */
+  text-align: left;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out; /* Subtiele animatie */
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content p {
+  margin: 10px 0;
+}
+
+.close-button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+.copy-button{
+  background: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+.close-button:hover {
+  background: #e60000;
+}
+
+/* Fade-in Animatie */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
