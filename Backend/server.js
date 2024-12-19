@@ -23,8 +23,10 @@ const pool = new Pool({
 // Prompts Ophalen
 // API route om prompts op te halen met gekoppelde afdelingen, functies, applicaties en werkzaamheden
 app.get('/api/prompts', async (req, res) => {
+    const { functie, afdeling, soort, werkzaamheid } = req.query; // Queryparameters ophalen
+
     try {
-        const query = `
+        let query = `
             SELECT 
                 p.id AS prompt_id,
                 p.titel,
@@ -46,13 +48,35 @@ app.get('/api/prompts', async (req, res) => {
             LEFT JOIN applicaties app ON pap.applicatie_id = app.id
             LEFT JOIN prompt_werkzaamheden pw ON p.id = pw.prompt_id
             LEFT JOIN werkzaamheden w ON pw.werkzaamheid_id = w.id
-            GROUP BY 
-                p.id
-            ORDER BY 
-                p.id
+            WHERE 1=1
+        `;
+
+        // Dynamische filters toevoegen
+        const queryParams = [];
+        if (functie) {
+            query += ' AND f.naam ILIKE $' + (queryParams.length + 1);
+            queryParams.push(`%${functie}%`);
+        }
+        if (afdeling) {
+            query += ' AND a.naam ILIKE $' + (queryParams.length + 1);
+            queryParams.push(`%${afdeling}%`);
+        }
+        if (soort) {
+            query += ' AND p.soort ILIKE $' + (queryParams.length + 1);
+            queryParams.push(`%${soort}%`);
+        }
+        if (werkzaamheid) {
+            query += ' AND w.naam ILIKE $' + (queryParams.length + 1);
+            queryParams.push(`%${werkzaamheid}%`);
+        }
+
+        query += `
+            GROUP BY p.id
+            ORDER BY p.id
             LIMIT 50;
         `;
-        const result = await pool.query(query);
+
+        const result = await pool.query(query, queryParams);
         res.json(result.rows);
     } catch (error) {
         console.error('Database error:', error);
@@ -208,9 +232,9 @@ app.get('/api/afdelingen/:id/functies', async (req, res) => {
     }
 });
 
-//Werkzaamheden bij Functie
+//Werkzaamheden van Functie
 // API route om werkzaamheden onder een specifieke functie op te halen
-app.get('/api/functie/:id/werkzaamheden', async (req, res) => {
+app.get('/api/functies/:id/werkzaamheden', async (req, res) => {
     const functieId = parseInt(req.params.id, 10);
 
     if (isNaN(functieId)) {

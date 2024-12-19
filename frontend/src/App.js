@@ -19,7 +19,7 @@ function Home() {
 
   const fetchPrompts = async () => {
     try {
-      const response = await axios.get('http://test-hartingstraat.duckdns.org:5000/api/prompts');
+      const response = await axios.get('http://31.21.14.192:5000/api/prompts');
       setPrompts(response.data);
       setFilteredPrompts(response.data);
     } catch (error) {
